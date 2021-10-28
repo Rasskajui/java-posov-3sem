@@ -9,6 +9,10 @@ public class ArrayTasks {
         System.out.println(allSimilar(new int[]{0, 0, 1}));
         System.out.println(allSimilar(new int[]{0, 0}));
         System.out.println(allSimilar(new int[]{}));
+
+        System.out.println(hasSimilar(new int[]{0, 1, 2, 3, 2}));
+        System.out.println(hasSimilar(new int[]{0, 1, 2, 3, 4}));
+        System.out.println(hasSimilar(new int[]{0}));
     }
 
     public static int[] even(int n) {
@@ -29,6 +33,17 @@ public class ArrayTasks {
             }
         }
         return true;
+    }
+
+    public static boolean hasSimilar(int[] a){
+        if( a.length > 1) {
+            for (int i = 0; i < a.length - 1; i++){
+                for (int j = a[i + 1]; j < a.length; j++){
+                    if (a[j] == a[i]) return true;
+                }
+            }
+        }
+        return false;
     }
 
 
