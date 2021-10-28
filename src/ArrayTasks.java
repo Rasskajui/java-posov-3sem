@@ -16,6 +16,10 @@ public class ArrayTasks {
 
         System.out.println(mean(new int[]{1, 2, 3}));
         System.out.println(mean(new int[]{1, 2}));
+
+        int[] a = {10, 20, 30, 40};
+        shift(a);
+        System.out.println(Arrays.toString(a));
     }
 
     public static int[] even(int n) {
@@ -55,5 +59,18 @@ public class ArrayTasks {
             sum += x;
         }
         return (double) sum / a.length;
+    }
+
+    public static void shift(int[] a) {
+        if (a.length > 0) {
+            int x = a[0];
+            a[0] = a[a.length - 1];
+            for (int i = 1; i < a.length; i++){
+                int temp = a[i];
+                a[i] = x;
+                x = temp;
+            }
+        }
+        return;
     }
 }
