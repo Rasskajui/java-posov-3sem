@@ -20,6 +20,10 @@ public class ArrayTasks {
         int[] a = {10, 20, 30, 40};
         shift(a);
         System.out.println(Arrays.toString(a));
+
+        int[] x = {10, 20, 30, 40};
+        System.out.println(Arrays.toString(copyShift(x)));
+        System.out.println(Arrays.toString(x));
     }
 
     public static int[] even(int n) {
@@ -72,5 +76,14 @@ public class ArrayTasks {
             }
         }
         return;
+    }
+
+    public static int[] copyShift(int[] a) {
+        int[] b = new int[a.length];
+        b[0] = a[a.length - 1];
+        for (int i = 1; i < b.length; i++){
+            b[i] = a[i - 1];
+        }
+        return b;
     }
 }
