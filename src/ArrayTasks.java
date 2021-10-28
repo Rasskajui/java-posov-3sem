@@ -13,6 +13,9 @@ public class ArrayTasks {
         System.out.println(hasSimilar(new int[]{0, 1, 2, 3, 2}));
         System.out.println(hasSimilar(new int[]{0, 1, 2, 3, 4}));
         System.out.println(hasSimilar(new int[]{0}));
+
+        System.out.println(mean(new int[]{1, 2, 3}));
+        System.out.println(mean(new int[]{1, 2}));
     }
 
     public static int[] even(int n) {
@@ -46,6 +49,11 @@ public class ArrayTasks {
         return false;
     }
 
-
-
+    public static double mean(int[] a) {
+        int sum = 0;
+        for (int x : a) {
+            sum += x;
+        }
+        return (double) sum / a.length;
+    }
 }
