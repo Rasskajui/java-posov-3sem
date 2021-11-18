@@ -26,6 +26,8 @@ public class ArrayTasks {
         System.out.println(Arrays.toString(x));
 
         printTable(new int[][]{{10, 20, 30}, {1, 2}, {0, 1, 2, 30, 400}});
+        System.out.println();
+        printTableAligned(new int[][]{{10, 2000, 30}, {1, 2}, {0, 1, 2, 30, 400}});
     }
 
     public static int[] even(int n) {
@@ -97,6 +99,38 @@ public class ArrayTasks {
             System.out.println();
         }
     }
+
+    private static void printTableAligned(int[][] a){
+        int max = 0;
+        for (int i = 0; i < a.length; i++){
+            if (a[i].length > max){
+               max = a[i].length;
+            }
+        }
+
+        int[] l = new int[max];
+        int[][] all_l = new int[a.length][max];
+
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++) {
+                all_l[i][j] = Integer.toString(a[i][j]).length();
+                if (all_l[i][j] > l[j]) {
+                    l[j] = all_l[i][j];
+                }
+            }
+
+        }
+
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                String box = " ".repeat(l[j] - Integer.toString(a[i][j]).length()) + Integer.toString(a[i][j]);
+                System.out.print(box + "  ");
+            }
+            System.out.println();
+        }
+    }
+
+    
 }
 
 
