@@ -28,6 +28,17 @@ public class ArrayTasks {
         printTable(new int[][]{{10, 20, 30}, {1, 2}, {0, 1, 2, 30, 400}});
         System.out.println();
         printTableAligned(new int[][]{{10, 2000, 30}, {1, 2}, {0, 1, 2, 30, 400}});
+
+        char[][] c = createTable(20, '.');
+        printTable2(c);
+
+        System.out.println("============ Заполним строки: ==========");
+        fillFirstAndLastLines(c, '#');
+        printTable2(c);
+
+        System.out.println("============ Заполним столбцы: =========");
+        fillFirstAndLastColumns(c, '#');
+        printTable2(c);
     }
 
     public static int[] even(int n) {
@@ -100,7 +111,7 @@ public class ArrayTasks {
         }
     }
 
-    private static void printTableAligned(int[][] a){
+    public static void printTableAligned(int[][] a){
         int max = 0;
         for (int i = 0; i < a.length; i++){
             if (a[i].length > max){
@@ -130,7 +141,43 @@ public class ArrayTasks {
         }
     }
 
-    
+    public static char[][] createTable(int n, char c){
+        char[][] a = new char[n][n];
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                a[i][j] = c;
+            }
+        }
+        return a;
+    }
+
+    public static void printTable2(char[][] a){
+        for (int i = 0; i < a.length; i++){
+            for (int j = 0; j < a[i].length; j++){
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void fillFirstAndLastLines(char[][] a, char x){
+        for (int j = 0; j < a[0].length; j++){
+            a[0][j] = x;
+        }
+        for (int j = 0; j < a[a.length - 1].length; j++){
+            a[a.length - 1][j] = x;
+        }
+    }
+
+    public static void fillFirstAndLastColumns(char[][] a, char x){
+        for (int i = 0; i < a.length; i++){
+            a[i][0] = x;
+            a[i][a[i].length - 1] = x;
+        }
+    }
+
+
+
 }
 
 
