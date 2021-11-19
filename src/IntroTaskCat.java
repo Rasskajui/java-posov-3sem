@@ -8,13 +8,13 @@ public class IntroTaskCat {
 
     public static String Cat(int x) {
         String cats;
-        int LastTwo = x % 100;
-        int LastOne = x % 10;
-        if (LastTwo <= 20 && LastTwo >= 10) {
+        int lastTwo = x % 100;
+        int lastOne = x % 10;
+        if (lastTwo <= 20 && lastTwo >= 10) {
             cats = "котов";
-        } else if (LastOne >= 5 && LastOne <= 9 || LastOne == 0) {
+        } else if (lastOne >= 5 && lastOne <= 9 || lastOne == 0) {
             cats = "котов";
-        } else if (LastOne == 1) {
+        } else if (lastOne == 1) {
             cats = "кот";
         } else {
             cats = "кота";

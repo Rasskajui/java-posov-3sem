@@ -1,12 +1,14 @@
 public class IntroTaskQuadraticEquation {
     public static void main(String[] args) {
-        System.out.println(QuadraticEquation(1, 2, 1));
-        System.out.println(QuadraticEquation(1, -14, 45));
-        System.out.println(QuadraticEquation(1, 1, 1));
-        System.out.println(QuadraticEquation(0,0, 0));
+        System.out.println(quadraticEquation(1, 2, 1));
+        System.out.println(quadraticEquation(1, -14, 45));
+        System.out.println(quadraticEquation(1, 1, 1));
+        System.out.println(quadraticEquation(0,0, 0));
+        System.out.println(quadraticEquation(0,2, 1));
+        System.out.println(quadraticEquation(4,4, 1));
     }
 
-    public static String QuadraticEquation(int a, int b, int c) {
+    public static String quadraticEquation(int a, int b, int c) {
         if (a == 0) {
             if (b == 0) {
                 if (c == 0) {
@@ -15,7 +17,7 @@ public class IntroTaskQuadraticEquation {
                     return "решений нет";
                 }
             } else {
-                double x = - c / b;
+                double x = - (double) c / b;
                 return "Единственное решение x = " + String.format("%.2f", x);
             }
         } else {
@@ -23,7 +25,7 @@ public class IntroTaskQuadraticEquation {
             if (D < 0) {
                 return "решений нет";
             } else if (D == 0) {
-                double x = - b / (2 * a);
+                double x = - (double) b / (2 * a);
                 return "Единственное решение x = " + String.format("%.2f", x);
             } else {
                 double x1 = - (b + Math.sqrt(D)) / (2 * a);
