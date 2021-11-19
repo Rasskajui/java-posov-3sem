@@ -13,6 +13,8 @@ public class ArrayTasks {
         System.out.println(hasSimilar(new int[]{0, 1, 2, 3, 2}));
         System.out.println(hasSimilar(new int[]{0, 1, 2, 3, 4}));
         System.out.println(hasSimilar(new int[]{0}));
+        System.out.println(hasSimilar(new int[]{-10, -20, -30}));
+        System.out.println(hasSimilar(new int[]{-10, -20, -30, -20}));
 
         System.out.println(mean(new int[]{1, 2, 3}));
         System.out.println(mean(new int[]{1, 2}));
@@ -64,7 +66,7 @@ public class ArrayTasks {
     public static boolean hasSimilar(int[] a){
         if( a.length > 1) {
             for (int i = 0; i < a.length - 1; i++){
-                for (int j = a[i + 1]; j < a.length; j++){
+                for (int j = i + 1; j < a.length; j++){
                     if (a[j] == a[i]) return true;
                 }
             }
@@ -90,7 +92,6 @@ public class ArrayTasks {
                 x = temp;
             }
         }
-        return;
     }
 
     public static int[] copyShift(int[] a) {
