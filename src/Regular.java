@@ -20,6 +20,9 @@ public class Regular {
 
         System.out.println(cats("Строка с кОтами, раз кот, два КОТ, три КоТ, всего четыре"));
         System.out.println(catsAsWord("Строка с кОтами, раз кот, два КОТ, три КоТ, всего четыре"));
+        System.out.println();
+
+        System.out.println(plusOne("У меня 22 яблока и -44 банана"));
     }
 
     public static boolean isEmail(String email){
@@ -86,8 +89,19 @@ public class Regular {
         }
         return cats;
     }
-    
 
+    public static String plusOne(String s){
+        Pattern numPattern = Pattern.compile("(-?)(\\d+)");
+        Matcher m = numPattern.matcher(s);
+        StringBuilder sb = new StringBuilder();
+        while (m.find()){
+            int n = Integer.parseInt(m.group()) + 1;
+            String replacement = Integer.toString(n);
+            m.appendReplacement(sb, replacement);
+        }
+        m.appendTail(sb);
+        return sb.toString();
+    }
 
 
 
