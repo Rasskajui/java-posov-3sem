@@ -10,6 +10,12 @@ public class Regular {
         System.out.println();
 
         allTimes("Это текст про 22:15 или про 54:26, а может может быть 15:90 сможет 03:24");
+        System.out.println();
+
+        System.out.println(replaceWhiteSpaces("Это строка , у которой зачем-то написаны два , пробела перед запятой."));
+        System.out.println();
+
+        System.out.println(switchWords("Какая-то сине-зеленовая трава"));
     }
 
     public static boolean isEmail(String email){
@@ -31,12 +37,12 @@ public class Regular {
     }
 
     public static boolean isTime(String s){
-        Pattern emailPattern = Pattern.compile("((0|1)\\d|20|21|22|23):((0|1|2|3|4|5)\\d)");
-        Matcher m = emailPattern.matcher(s);
+        Pattern isTimePattern = Pattern.compile("((0|1)\\d|20|21|22|23):((0|1|2|3|4|5)\\d)");
+        Matcher m = isTimePattern.matcher(s);
         return m.matches();
     }
 
-    private static void allTimes(String s){
+    public static void allTimes(String s){
         Pattern timePattern = Pattern.compile("\\d\\d:\\d\\d");
         Matcher m = timePattern.matcher(s);
         while(m.find()){
@@ -48,5 +54,14 @@ public class Regular {
             }
         }
     }
+
+    public static String replaceWhiteSpaces(String s){
+        return s.replaceAll("\\s++,", ",");
+    }
+
+    public static String switchWords(String s){
+        return s.replaceAll("([а-яА-Яa-zA-Z]+)-([а-яА-Яa-zA-Z]+)", "$2-$1");
+    }
+
 
 }
