@@ -16,6 +16,10 @@ public class Regular {
         System.out.println();
 
         System.out.println(switchWords("Какая-то сине-зеленовая трава"));
+        System.out.println();
+
+        System.out.println(cats("Строка с кОтами, раз кот, два КОТ, три КоТ, всего четыре"));
+        System.out.println(catsAsWord("Строка с кОтами, раз кот, два КОТ, три КоТ, всего четыре"));
     }
 
     public static boolean isEmail(String email){
@@ -62,6 +66,29 @@ public class Regular {
     public static String switchWords(String s){
         return s.replaceAll("([а-яА-Яa-zA-Z]+)-([а-яА-Яa-zA-Z]+)", "$2-$1");
     }
+
+    public static int cats(String s){
+        Pattern catPattern = Pattern.compile("(к|К)(о|О)(т|Т)");
+        Matcher m = catPattern.matcher(s);
+        int cats = 0;
+        while(m.find()){
+            cats++;
+        }
+        return cats;
+    }
+
+    public static int catsAsWord(String s){
+        Pattern catPattern = Pattern.compile("\\b(к|К)(о|О)(т|Т)\\b");
+        Matcher m = catPattern.matcher(s);
+        int cats = 0;
+        while(m.find()){
+            cats++;
+        }
+        return cats;
+    }
+    
+
+
 
 
 }
