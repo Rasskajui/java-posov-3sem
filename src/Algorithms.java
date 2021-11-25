@@ -3,6 +3,7 @@ import java.util.Arrays;
 public class Algorithms {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(sieveOfEratosthenes(20)));
+        System.out.println(Arrays.toString(primes(20)));
     }
 
     public static boolean[] sieveOfEratosthenes(int n){
@@ -25,5 +26,24 @@ public class Algorithms {
             }
         }
         return prime;
+    }
+
+    public static int[] primes(int n){
+        boolean[] primeCheck = sieveOfEratosthenes(n);
+        int primesLength = 0;
+        for (int i = 0; i < n; i++){
+            if (primeCheck[i]){
+                primesLength++;
+            }
+        }
+        int[] primes = new int[primesLength];
+        int k = 0;
+        for (int i = 0; i < n; i++){
+            if (primeCheck[i]){
+                primes[k] = i;
+                k++;
+            }
+        }
+        return primes;
     }
 }
