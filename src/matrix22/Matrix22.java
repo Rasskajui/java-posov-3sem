@@ -64,6 +64,27 @@ public class Matrix22 {
             System.out.println();
         }
     }
-    
+
+    public Matrix22 add(Matrix22 m){
+        int[][] m2 = m.getMatrix();
+        return new Matrix22(this.matrix[0][0] + m2[0][0], this.matrix[0][1] + m2[0][1], this.matrix[1][0] + m2[1][0], this.matrix[1][1] + m2[1][1]);
+    }
+
+    public Matrix22 mul(Matrix22 m){
+        int[][] m2 = m.getMatrix();
+        int a = matrix[0][0]*m2[0][0] + matrix[0][1]*m2[1][0];
+        int b = matrix[0][0]*m2[0][1] + matrix[0][1]*m2[1][1];
+        int c = matrix[1][0]*m2[0][0] + matrix[1][1]*m2[1][0];
+        int d = matrix[1][0]*m2[0][1] + matrix[1][1]*m2[1][1];
+        return new Matrix22(a, b, c, d);
+    }
+
+    public Matrix22 pow(int n){
+        Matrix22 m2 = this;
+        for (int i = 1; i < n; i++){
+            m2 = this.mul(m2);
+        }
+        return m2;
+    }
 
 }
