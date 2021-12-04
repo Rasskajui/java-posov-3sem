@@ -1,3 +1,5 @@
+package intro;
+
 public class IntroTaskQuadraticEquation {
     public static void main(String[] args) {
         System.out.println(quadraticEquation(1, 2, 1));

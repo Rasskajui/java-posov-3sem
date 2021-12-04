@@ -1,3 +1,5 @@
+package intro;
+
 public class IntroTaskCat {
     public static void main(String[] args) {
         System.out.println(Cat(0));

@@ -1,3 +1,5 @@
+package intro;
+
 public class IntroTask3Digits {
     public static void main(String[] args) {
         System.out.println(is3Digets(10));

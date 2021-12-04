@@ -1,3 +1,5 @@
+package intro;
+
 public class IntroTaskSameDigits {
     public static void main(String[] args) {
         System.out.println(isSame(2333));
