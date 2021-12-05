@@ -7,7 +7,7 @@ public class MatrixTester {
         Matrix22 m1 = new Matrix22(1, 2, 3, 4);
         m1.printMatrix();
 
-        Matrix22 m2 = new Matrix22(new int[][]{{1, 2}, {3, 4}});
+        Matrix22 m2 = new Matrix22(new double[][]{{1, 2}, {3, 4}});
         m2.printMatrix();
 
         System.out.println(m1.trace());
@@ -19,6 +19,7 @@ public class MatrixTester {
 
         Matrix22 m3 = new Matrix22(1000, 5, 40, 20000);
         m3.add(m2).printMatrixAligned();
+        System.out.println();
         m3.mul(m2).printMatrixAligned();
         System.out.println();
 
@@ -27,15 +28,19 @@ public class MatrixTester {
         System.out.println();
 
         System.out.println(fib(8));
+        System.out.println();
 
+        Rotation r = new Rotation(0);
+        r.printMatrixAligned();
+        System.out.println(r.getAngle());
 
-
+        
     }
 
-    public static int fib(int n){
+    public static double fib(int n){
         Matrix22 m = new Matrix22(1, 1, 1, 0);
         m = m.pow(n);
-        int[][] f = m.getMatrix();
+        double[][] f = m.getMatrix();
         return f[0][1];
     }
 

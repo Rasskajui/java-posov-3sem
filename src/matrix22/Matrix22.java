@@ -3,40 +3,40 @@ package matrix22;
 import java.util.Arrays;
 
 public class Matrix22 {
-    int[][] matrix = new int[2][2];
+    double[][] matrix = new double[2][2];
 
-    public Matrix22(int a, int b, int c, int d){
+    public Matrix22(double a, double b, double c, double d){
         this.matrix[0][0] = a;
         this.matrix[0][1] = b;
         this.matrix[1][0] = c;
         this.matrix[1][1] = d;
     }
 
-    public Matrix22(int[][] m){
+    public Matrix22(double[][] m){
         this.matrix = m;
     }
 
     public void printMatrix(){
-        for (int[] x : this.matrix){
+        for (double[] x : this.matrix){
             System.out.println(Arrays.toString(x));
         }
     }
 
-    public int trace(){
+    public double trace(){
         return this.matrix[0][0] + this.matrix[1][1];
     }
 
-    public int discriminant(){
+    public double discriminant(){
         return matrix[0][0]*matrix[1][1] - matrix[1][0]*matrix[0][1];
     }
 
-    public int[][] getMatrix(){
+    public double[][] getMatrix(){
         return this.matrix;
     }
 
     public String toString(){
         String s = "";
-        for (int[] x : this.matrix){
+        for (double[] x : this.matrix){
             s += Arrays.toString(x) + "\n";
         }
         return s;
@@ -48,7 +48,7 @@ public class Matrix22 {
 
         for (int i = 0; i < 2; i++){
             for (int j = 0; j < 2; j++) {
-                all_l[i][j] = Integer.toString(matrix[i][j]).length();
+                all_l[i][j] = Double.toString(matrix[i][j]).length();
                 if (all_l[i][j] > l[j]) {
                     l[j] = all_l[i][j];
                 }
@@ -58,7 +58,7 @@ public class Matrix22 {
 
         for (int i = 0; i < 2; i++){
             for (int j = 0; j < 2; j++){
-                String box = " ".repeat(l[j] - Integer.toString(matrix[i][j]).length()) + Integer.toString(matrix[i][j]);
+                String box = " ".repeat(l[j] - Double.toString(matrix[i][j]).length()) + Double.toString(matrix[i][j]);
                 System.out.print(box + "  ");
             }
             System.out.println();
@@ -66,16 +66,16 @@ public class Matrix22 {
     }
 
     public Matrix22 add(Matrix22 m){
-        int[][] m2 = m.getMatrix();
+        double[][] m2 = m.getMatrix();
         return new Matrix22(this.matrix[0][0] + m2[0][0], this.matrix[0][1] + m2[0][1], this.matrix[1][0] + m2[1][0], this.matrix[1][1] + m2[1][1]);
     }
 
     public Matrix22 mul(Matrix22 m){
-        int[][] m2 = m.getMatrix();
-        int a = matrix[0][0]*m2[0][0] + matrix[0][1]*m2[1][0];
-        int b = matrix[0][0]*m2[0][1] + matrix[0][1]*m2[1][1];
-        int c = matrix[1][0]*m2[0][0] + matrix[1][1]*m2[1][0];
-        int d = matrix[1][0]*m2[0][1] + matrix[1][1]*m2[1][1];
+        double[][] m2 = m.getMatrix();
+        double a = matrix[0][0]*m2[0][0] + matrix[0][1]*m2[1][0];
+        double b = matrix[0][0]*m2[0][1] + matrix[0][1]*m2[1][1];
+        double c = matrix[1][0]*m2[0][0] + matrix[1][1]*m2[1][0];
+        double d = matrix[1][0]*m2[0][1] + matrix[1][1]*m2[1][1];
         return new Matrix22(a, b, c, d);
     }
 
