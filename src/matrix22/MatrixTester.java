@@ -34,7 +34,7 @@ public class MatrixTester {
         r.printMatrixAligned();
         System.out.println(r.getAngle());
 
-        
+
     }
 
     public static double fib(int n){
