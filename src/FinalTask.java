@@ -3,7 +3,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Scanner;
 
-public class finalTask {
+public class FinalTask {
     public static void main(String[] args) throws Exception {
         writeFile("numbersAligned.txt", readFile("numbers.txt"));
     }
@@ -23,8 +23,9 @@ public class finalTask {
     public static int maxLength(int[] a) throws Exception{
         int max = 0;
         for (int x : a){
-            if (Integer.toString(x).length() > max){
-                max = Integer.toString(x).length();
+            int len = Integer.toString(x).length();
+            if (len > max){
+                max = len;
             }
         }
         return max;
