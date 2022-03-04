@@ -17,11 +17,31 @@ public class ExperimentsWithRational {
         System.out.println();
 
         var r4 = new Rational(1, 6);
-        var r5 = new Rational(-1, 3);
+        var r5 = new Rational(1, 3);
         Rational r6 = r4.add(r5);
         System.out.println(r6.toString());
         r4.addInPlace(r5);
-        System.out.println(r4);
+        System.out.println(r4); // 1/2
         System.out.println();
+
+        Rational r7 = r4.sub(r5); // 1/2 - 1/3 = 1/6
+        System.out.println(r7.toString());
+        r7.subInPlace(r4);
+        System.out.println(r7); // 1/6 - 1/2 = -1/3
+        System.out.println();
+
+        Rational r8 = r2.mul(r3);
+        System.out.println(r8); // 5 * 2 = 10
+        r8.mulInPlace(r1);
+        System.out.println(r8); // 10 * -3/2 = -15
+        System.out.println();
+
+        Rational r9 = r8.div(r1);
+        System.out.println(r9); // -15 / -3/2 = 10
+        r9.divInPlace(r1);
+        System.out.println(r9); // 10 / -3/2 = -20/3
+        System.out.println();
+
+
     }
 }
