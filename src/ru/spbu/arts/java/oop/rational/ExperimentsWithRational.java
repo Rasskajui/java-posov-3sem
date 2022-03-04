@@ -1,6 +1,17 @@
 package ru.spbu.arts.java.oop.rational;
 
 public class ExperimentsWithRational {
+
+    public static double f(int n){
+        var s = new Rational(0, 1);
+        var toAdd = new Rational(1, 1);
+        for (int i = 1; i <= n; i++){
+            s.addInPlace(toAdd);
+            toAdd = new Rational(1, i + 1);
+        }
+        return s.toDouble();
+    }
+
     public static void main(String[] args) {
         var r1 = new Rational(6, -4);
         var r2 = new Rational(5);
@@ -42,6 +53,11 @@ public class ExperimentsWithRational {
         System.out.println(r9); // 10 / -3/2 = -20/3
         System.out.println();
 
+        System.out.println(f(1));
+        System.out.println(f(2));
+        System.out.println(f(3));
+
+        System.out.println(f(20)); // получается 3.597739657143682, но я не понимаю, что тут надо исправлять
 
     }
 }
