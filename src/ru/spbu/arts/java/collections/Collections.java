@@ -102,18 +102,17 @@ public class Collections {
     }
 
     public static void reverseListInPlace(List<String> list){
-        List<String> newList = reverseList(list);
-        for(int i = 0; i < list.size(); i++){
-            list.set(i, newList.get(i));
+        for(int i = 0; i < list.size() / 2; i++){
+            String temp = list.get(i);
+            list.set(i, list.get(list.size() - i - 1));
+            list.set(list.size() - i - 1, temp);
         }
     }
 
     public static List<Integer> filterEvenIndices(List<Integer> list){
         List<Integer> newList = new ArrayList<>();
-        for(int i = 0; i < list.size(); i++){
-            if ((i + 1) % 2 == 0){
-                newList.add(list.get(i));
-            }
+        for(int i = 1; i < list.size(); i+=2){
+            newList.add(list.get(i));
         }
         return newList;
     }
@@ -130,28 +129,14 @@ public class Collections {
 
     public static void mutableFilterEvenIndices(List<Integer> list){
         for(int i = 0; i < list.size(); i++){
-            if (i % 2 == 0){
-                list.set(i, null);
-            }
-        }
-        int i = 0;
-        while(i < list.size()){
-            if (list.get(i) == null){
-                list.remove(i);
-            } else
-                i++;
+            list.remove(i);
         }
     }
 
     public static void mutableFilterEven(List<Integer> list){
-        for(int i = 0; i < list.size(); i++){
-            if (list.get(i) % 2 == 0){
-                list.set(i, null);
-            }
-        }
         int i = 0;
         while(i < list.size()){
-            if (list.get(i) == null){
+            if (list.get(i) % 2 == 0){
                 list.remove(i);
             } else
                 i++;

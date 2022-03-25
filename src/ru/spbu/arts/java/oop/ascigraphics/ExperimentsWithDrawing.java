@@ -42,6 +42,10 @@ public class ExperimentsWithDrawing {
         ImmutableDrawing d4 = d3.setPoint(2, 2, ',');
         d4.print();
         System.out.println();
+        var d20 = d4.setPoint(3, 3, ',');
+        System.out.println();
+        d20.print();
+        System.out.println();
         d3.print();
 
 

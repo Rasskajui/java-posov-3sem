@@ -13,8 +13,6 @@ public class ExperimentsWithRational {
     }
 
     public static void main(String[] args) {
-        Rational.ONE = new Rational(1);
-        Rational.ZERO = new Rational(0);
 
         var r1 = new Rational(6, -4);
         var r2 = new Rational(5);
@@ -34,25 +32,25 @@ public class ExperimentsWithRational {
         var r5 = new Rational(1, 3);
         Rational r6 = r4.add(r5);
         System.out.println(r6.toString());
-//        r4.addInPlace(r5);
+//        r4.add(r5);
 //        System.out.println(r4); // 1/2
         System.out.println();
 
         Rational r7 = r4.sub(r5); // 1/2 - 1/3 = 1/6
         System.out.println(r7.toString());
-//        r7.subInPlace(r4);
+//        r7.sub(r4);
 //        System.out.println(r7); // 1/6 - 1/2 = -1/3
         System.out.println();
 
         Rational r8 = r2.mul(r3);
         System.out.println(r8); // 5 * 2 = 10
-//        r8.mulInPlace(r1);
+//        r8.mul(r1);
 //        System.out.println(r8); // 10 * -3/2 = -15
         System.out.println();
 
         Rational r9 = r8.div(r1);
         System.out.println(r9); // -15 / -3/2 = 10
-//        r9.divInPlace(r1);
+//        r9.div(r1);
 //        System.out.println(r9); // 10 / -3/2 = -20/3
         System.out.println();
 
@@ -60,7 +58,9 @@ public class ExperimentsWithRational {
         System.out.println(f(2));
         System.out.println(f(3));
 
-        System.out.println(f(20)); // получается 3.597739657143682, но я не понимаю, что тут надо исправлять
+        System.out.println(f(20));   // получается 3.597739657143682, но я не понимаю, что тут надо исправлять
+                                        // стало 0.8302753773574207 после изменения add, похоже как раз из-за переполнений int это происходит, потому что там уже очень большие числители/знаменатели
+                                        // можно исправить, используя НОК ))
         System.out.println();
 
         System.out.println(r1.getN());

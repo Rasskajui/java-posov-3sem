@@ -1,8 +1,8 @@
 package ru.spbu.arts.java.oop.rational;
 
 public class Rational {
-    static Rational ONE;
-    static Rational ZERO;
+    public static Rational ONE = new Rational(1);
+    public static Rational ZERO = new Rational(0);
 
     static int gcd(int a, int b){
         while(b != 0){
@@ -55,17 +55,18 @@ public class Rational {
     }
 
     public Rational add(Rational r){
-        int gcd = gcd(r.d, this.d);
-        int lcm = r.d * this.d / gcd;
-        int newNum = (lcm / this.d)* this.n + (lcm / r.d) * r.n;
-        return new Rational(newNum, lcm);
+//        int gcd = gcd(r.d, this.d);
+//        int lcm = r.d * this.d / gcd;
+//        int newNum = (lcm / this.d)* this.n + (lcm / r.d) * r.n;
+//        return new Rational(newNum, lcm);
+        return new Rational(r.d * this.n + this.d * r.n, r.d * this.d);
     }
 
     static Rational addStatic(Rational r1, Rational r2){
         return r1.add(r2);
     }
 
-//    public void addInPlace(Rational r){
+//    public void add(Rational r){
 //        var newRat = this.add(r);
 //        this.n = newRat.n;
 //        this.d = newRat.d;
@@ -80,7 +81,7 @@ public class Rational {
         return r1.sub(r2);
     }
 
-//    public void subInPlace(Rational r){
+//    public void sub(Rational r){
 //        var newRat = this.sub(r);
 //        this.n = newRat.n;
 //        this.d = newRat.d;
@@ -94,7 +95,7 @@ public class Rational {
         return r1.mul(r2);
     }
 
-//    public void mulInPlace(Rational r){
+//    public void mul(Rational r){
 //        var newNum = new Rational(this.n * r.n, this.d * r.d);
 //        this.n = newNum.n;
 //        this.d = newNum.d;
@@ -109,7 +110,7 @@ public class Rational {
         return r1.div(r2);
     }
 
-//    public void divInPlace(Rational r){
+//    public void div(Rational r){
 //        var newNum = new Rational(this.n * r.d, this.d * r.n);
 //        this.n = newNum.n;
 //        this.d = newNum.d;

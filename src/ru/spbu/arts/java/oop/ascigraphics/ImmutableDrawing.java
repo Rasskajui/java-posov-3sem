@@ -23,7 +23,7 @@ public class ImmutableDrawing {
     }
 
     public ImmutableDrawing setPoint(int x, int y, char c){
-        ImmutableDrawing newDrawing = new ImmutableDrawing(this.imDrawing[0].length, this.imDrawing.length, this.imDrawing[0][0]);
+        ImmutableDrawing newDrawing = this;
         newDrawing.imDrawing[this.imDrawing.length - y][x - 1] = c;
         return newDrawing;
     }
