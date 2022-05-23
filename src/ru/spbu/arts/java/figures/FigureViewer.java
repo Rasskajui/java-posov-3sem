@@ -1,6 +1,7 @@
 package ru.spbu.arts.java.figures;
 
 import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,7 +12,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.Scanner;
 
 public class FigureViewer extends Application {
     public final static int W = 600;
@@ -33,6 +44,11 @@ public class FigureViewer extends Application {
     private Button further;
     private Button closer;
 
+    private Button save;
+    private Button load;
+    private Button export;
+    private Stage stage1;
+
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Фракталы");
@@ -41,6 +57,7 @@ public class FigureViewer extends Application {
 
         stage.setScene(new Scene(parent));
         stage.show();
+        stage1 = stage;
     }
 
     private Parent initInterface() {
@@ -75,9 +92,9 @@ public class FigureViewer extends Application {
         scalePane.setAlignment(Pos.CENTER);
 
         // сохранить-загрузить-экспорт
-        Button save = new Button("save");
-        Button load = new Button("load");
-        Button export = new Button("export");
+        save = new Button("save");
+        load = new Button("load");
+        export = new Button("export");
         HBox actionPane = new HBox();
         actionPane.getChildren().addAll(save, load, export);
         actionPane.setAlignment(Pos.CENTER);
@@ -87,6 +104,7 @@ public class FigureViewer extends Application {
         bottomPane.setStyle("-fx-background-color: blue;");
         bottomPane.setPrefHeight(70);
         HBox.setHgrow(bottomPane, Priority.ALWAYS);
+        VBox.setVgrow(bottomPane, Priority.ALWAYS);
         bottomPane.setSpacing(50);
 
         panel.getChildren().addAll(imageView, bottomPane);
@@ -129,6 +147,46 @@ public class FigureViewer extends Application {
             d = d*1.5;
             display = new Display(x0, y0, d);
             display.paint(img, mandelbrot);
+        });
+        save.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            FileChooser fc = new FileChooser();
+            File saveFile = fc.showOpenDialog(stage1);
+            try (PrintStream outFile = new PrintStream(saveFile, StandardCharsets.UTF_8)) {
+                outFile.println(x0);
+                outFile.println(y0);
+                outFile.println(d);
+                outFile.flush();
+            } catch (IOException e) {
+                System.out.println("Не удалось записать");
+            }
+        });
+        load.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            FileChooser fc = new FileChooser();
+            File loadFile = fc.showOpenDialog(stage1);
+            if (loadFile == null)
+                System.out.println("Ничего не выбрано");
+            else {
+                try (Scanner in = new Scanner(loadFile, StandardCharsets.UTF_8)) {
+                    x0 = Double.parseDouble(in.next());
+                    y0 = Double.parseDouble(in.next());
+                    d = Double.parseDouble(in.next());
+
+                    display = new Display(x0, y0, d);
+                    display.paint(img, mandelbrot);
+                } catch (IOException e) {
+                        System.out.println("Не удалось открыть");
+                    }
+                }
+            });
+        export.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            FileChooser fc = new FileChooser();
+            File exportFile = fc.showOpenDialog(stage1);
+            BufferedImage swingImage = SwingFXUtils.fromFXImage(img, null);
+            try {
+                ImageIO.write(swingImage, "png", exportFile);
+            } catch (IOException e) {
+                System.out.println("Не удалось записать");
+            }
         });
 
     }

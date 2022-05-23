@@ -25,7 +25,7 @@ public class Display {
                 double x = x0 + d * xPixel;
                 double y = y0 - d * yPixel;
                 double c = fractal.paint(x, y);
-                Color color = HSBPalette.getColor(c);
+                Color color = GrayscalePalette.getColor(c);
 
                 pixelWriter.setColor(xPixel, yPixel, color);
             }
