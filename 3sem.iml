@@ -17,5 +17,6 @@
         <jarDirectory url="file://$MODULE_DIR$/javafx-sdk-17.0.2/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jar_files" level="project" />
   </component>
 </module>

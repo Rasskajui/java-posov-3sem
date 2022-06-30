@@ -3,6 +3,7 @@ module ru.spbu.arts.java.javafx{
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.swing;
+    requires com.fasterxml.jackson.databind;
 
     opens ru.spbu.arts.java.javafx;
     opens ru.spbu.arts.java.messenger;
@@ -10,5 +11,6 @@ module ru.spbu.arts.java.javafx{
     opens ru.spbu.arts.java.circle;
     opens ru.spbu.arts.java.images;
     opens ru.spbu.arts.java.figures;
+    opens practice;
 
 }
